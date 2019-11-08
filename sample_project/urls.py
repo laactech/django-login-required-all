@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from . import views
+from sample_project import views
 
 urlpatterns = [
     url(r"^protected/$", views.ProtectedView.as_view(), name="protected_view"),

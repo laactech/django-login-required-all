@@ -35,7 +35,6 @@ pre-commit = "^1.20.0"
 mock = "^3.0.5"
 tox = "^3.14.0"
 pytest-django = "^3.6.0"
-pytest-pythonpath = "^0.7.3"
 
 [tool.tox]
 legacy_tox_ini = """
