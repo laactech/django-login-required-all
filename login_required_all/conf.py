@@ -20,9 +20,7 @@ def is_authenticated(user):
         return user.is_authenticated
 
 
-LRA_USER_TEST_FUNC = getattr(
-    settings, "LRA_USER_TEST_FUNC", is_authenticated
-)
+LRA_USER_TEST_FUNC = getattr(settings, "LRA_USER_TEST_FUNC", is_authenticated)
 
 
 if LRA_DEFAULTS:
