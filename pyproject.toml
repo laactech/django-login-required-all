@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "django-login-required-all"
+name = "login_required_all"
 version = "1.0.0"
 description = "Middleware to required login for all Django URLs"
 authors = ["Steven Pate <steven@laac.dev>", "Mike Grouchy <mgrouchy@gmail.com>"]
