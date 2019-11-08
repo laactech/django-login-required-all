@@ -1,9 +1,9 @@
 # Django Login Required All
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
-[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://github.com/laactech/foxcross/blob/master/LICENSE.md)
+[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://github.com/laactech/django-login-required-all/blob/master/LICENSE.md)
 
-Forked from [django-login-required-all](https://github.com/mgrouchy/django-login-required-all)
+Forked from [django-stronghold](https://github.com/mgrouchy/django-stronghold)
 
 Get inside your stronghold and make all your Django views default login_required
 
@@ -76,29 +76,29 @@ class SomeView(StrongholdPublicMixin, View):
 ## Configuration (optional)
 
 
-### STRONGHOLD_DEFAULTS
+### LRA_DEFAULTS
 
 Use Strongholds defaults in addition to your own settings.
 
 **Default**:
 
 ```python
-STRONGHOLD_DEFAULTS = True
+LRA_DEFAULTS = True
 ```
 
 You can add a tuple of url regexes in your settings file with the
-`STRONGHOLD_PUBLIC_URLS` setting. Any url that matches against these patterns
+`LRA_PUBLIC_URLS` setting. Any url that matches against these patterns
  will be made public without using the `@public` decorator.
 
 
-### STRONGHOLD_PUBLIC_URLS
+### LRA_PUBLIC_URLS
 
 **Default**:
 ```python
-STRONGHOLD_PUBLIC_URLS = ()
+LRA_PUBLIC_URLS = ()
 ```
 
-If STRONGHOLD_DEFAULTS is True STRONGHOLD_PUBLIC_URLS contains:
+If LRA_DEFAULTS is True LRA_PUBLIC_URLS contains:
 ```python
 (
     r'^%s.+$' % settings.STATIC_URL,
@@ -108,27 +108,27 @@ If STRONGHOLD_DEFAULTS is True STRONGHOLD_PUBLIC_URLS contains:
 ```
 When settings.DEBUG = True. This is additive to your settings to support serving
 Static files and media files from the development server. It does not replace any
-settings you may have in `STRONGHOLD_PUBLIC_URLS`.
+settings you may have in `LRA_PUBLIC_URLS`.
 
 > Note: Public URL regexes are matched against 
 >[HttpRequest.path_info](https://docs.djangoproject.com/en/dev/ref/request-response/#django.http.HttpRequest.path_info).
 
-### STRONGHOLD_PUBLIC_NAMED_URLS
+### LRA_PUBLIC_NAMED_URLS
 You can add a tuple of url names in your settings file with the
-`STRONGHOLD_PUBLIC_NAMED_URLS` setting. Names in this setting will be reversed using
+`LRA_PUBLIC_NAMED_URLS` setting. Names in this setting will be reversed using
 `django.core.urlresolvers.reverse` and any url matching the output of the reverse
 call will be made public without using the `@public` decorator:
 
 **Default**:
 ```python
-STRONGHOLD_PUBLIC_NAMED_URLS = ()
+LRA_PUBLIC_NAMED_URLS = ()
 ```
 
-If STRONGHOLD_DEFAULTS is True additionally we search for `django.contrib.auth`
-if it exists, we add the login and logout view names to `STRONGHOLD_PUBLIC_NAMED_URLS`
+If LRA_DEFAULTS is True additionally we search for `django.contrib.auth`
+if it exists, we add the login and logout view names to `LRA_PUBLIC_NAMED_URLS`
 
-### STRONGHOLD_USER_TEST_FUNC
-Optionally, set STRONGHOLD_USER_TEST_FUNC to a callable to limit access to users
+### LRA_USER_TEST_FUNC
+Optionally, set LRA_USER_TEST_FUNC to a callable to limit access to users
 that pass a custom test. The callback receives a `User` object and should
 return `True` if the user is authorized. This is equivalent to decorating a
 view with `user_passes_test`.
@@ -136,13 +136,13 @@ view with `user_passes_test`.
 **Example**:
 
 ```python
-STRONGHOLD_USER_TEST_FUNC = lambda user: user.is_staff
+LRA_USER_TEST_FUNC = lambda user: user.is_staff
 ```
 
 **Default**:
 
 ```python
-STRONGHOLD_USER_TEST_FUNC = lambda user: user.is_authenticated
+LRA_USER_TEST_FUNC = lambda user: user.is_authenticated
 ```
 
 ## Contribute

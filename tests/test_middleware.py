@@ -71,14 +71,14 @@ class LoginRequiredMiddlewareTests(TestCase):
     def test_returns_none_when_url_is_decorated_public(self):
         self.set_authenticated(False)
 
-        self.kwargs["view_func"].STRONGHOLD_IS_PUBLIC = True
+        self.kwargs["view_func"].LRA_IS_PUBLIC = True
         response = self.middleware.process_view(**self.kwargs)
 
         self.assertEqual(response, None)
 
     def test_redirects_to_login_when_not_passing_custom_test(self):
         with mock.patch(
-            "login_required_all.conf.STRONGHOLD_USER_TEST_FUNC", lambda u: u.is_staff
+            "login_required_all.conf.LRA_USER_TEST_FUNC", lambda u: u.is_staff
         ):
             self.request.user.is_staff = False
 
@@ -88,7 +88,7 @@ class LoginRequiredMiddlewareTests(TestCase):
 
     def test_returns_none_when_passing_custom_test(self):
         with mock.patch(
-            "login_required_all.conf.STRONGHOLD_USER_TEST_FUNC", lambda u: u.is_staff
+            "login_required_all.conf.LRA_USER_TEST_FUNC", lambda u: u.is_staff
         ):
             self.request.user.is_staff = True
 

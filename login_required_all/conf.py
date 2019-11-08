@@ -7,9 +7,9 @@ try:
 except ImportError:
     from django.core.urlresolvers import reverse, NoReverseMatch
 
-STRONGHOLD_PUBLIC_URLS = getattr(settings, "STRONGHOLD_PUBLIC_URLS", ())
-STRONGHOLD_DEFAULTS = getattr(settings, "STRONGHOLD_DEFAULTS", True)
-STRONGHOLD_PUBLIC_NAMED_URLS = getattr(settings, "STRONGHOLD_PUBLIC_NAMED_URLS", ())
+LRA_PUBLIC_URLS = getattr(settings, "LRA_PUBLIC_URLS", ())
+LRA_DEFAULTS = getattr(settings, "LRA_DEFAULTS", True)
+LRA_PUBLIC_NAMED_URLS = getattr(settings, "LRA_PUBLIC_NAMED_URLS", ())
 
 
 def is_authenticated(user):
@@ -20,19 +20,19 @@ def is_authenticated(user):
         return user.is_authenticated
 
 
-STRONGHOLD_USER_TEST_FUNC = getattr(
-    settings, "STRONGHOLD_USER_TEST_FUNC", is_authenticated
+LRA_USER_TEST_FUNC = getattr(
+    settings, "LRA_USER_TEST_FUNC", is_authenticated
 )
 
 
-if STRONGHOLD_DEFAULTS:
+if LRA_DEFAULTS:
     if "django.contrib.auth" in settings.INSTALLED_APPS:
-        STRONGHOLD_PUBLIC_NAMED_URLS += ("login", "logout")
+        LRA_PUBLIC_NAMED_URLS += ("login", "logout")
 
     # Do not login protect the logout url, causes an infinite loop
     logout_url = getattr(settings, "LOGOUT_URL", None)
     if logout_url:
-        STRONGHOLD_PUBLIC_URLS += (r"^%s.+$" % logout_url,)
+        LRA_PUBLIC_URLS += (r"^%s.+$" % logout_url,)
 
     if settings.DEBUG:
         # In Debug mode we serve the media urls as public by default as a
@@ -41,16 +41,16 @@ if STRONGHOLD_DEFAULTS:
         media_url = getattr(settings, "MEDIA_URL", None)
 
         if static_url:
-            STRONGHOLD_PUBLIC_URLS += (r"^%s.+$" % static_url,)
+            LRA_PUBLIC_URLS += (r"^%s.+$" % static_url,)
 
         if media_url:
-            STRONGHOLD_PUBLIC_URLS += (r"^%s.+$" % media_url,)
+            LRA_PUBLIC_URLS += (r"^%s.+$" % media_url,)
 
 # named urls can be unsafe if a user puts the wrong url in. Right now urls that
 # dont reverse are just ignored with a warning. Maybe in the future make this
 # so it breaks?
 named_urls = []
-for named_url in STRONGHOLD_PUBLIC_NAMED_URLS:
+for named_url in LRA_PUBLIC_NAMED_URLS:
     try:
         url = reverse(named_url)
         named_urls.append(url)
@@ -61,7 +61,7 @@ for named_url in STRONGHOLD_PUBLIC_NAMED_URLS:
         pass
 
 
-STRONGHOLD_PUBLIC_URLS += tuple(["^%s$" % url for url in named_urls])
+LRA_PUBLIC_URLS += tuple(["^%s$" % url for url in named_urls])
 
-if STRONGHOLD_PUBLIC_URLS:
-    STRONGHOLD_PUBLIC_URLS = [re.compile(v) for v in STRONGHOLD_PUBLIC_URLS]
+if LRA_PUBLIC_URLS:
+    LRA_PUBLIC_URLS = [re.compile(v) for v in LRA_PUBLIC_URLS]

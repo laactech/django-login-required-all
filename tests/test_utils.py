@@ -16,7 +16,7 @@ class IsViewFuncPublicTests(unittest.TestCase):
         def function():
             pass
 
-        function.STRONGHOLD_IS_PUBLIC = False
+        function.LRA_IS_PUBLIC = False
 
         is_public = utils.is_view_func_public(function)
 
@@ -26,7 +26,7 @@ class IsViewFuncPublicTests(unittest.TestCase):
         def function():
             pass
 
-        function.STRONGHOLD_IS_PUBLIC = True
+        function.LRA_IS_PUBLIC = True
 
         is_public = utils.is_view_func_public(function)
 
@@ -40,4 +40,4 @@ class SetViewFuncPublicTests(unittest.TestCase):
 
         utils.set_view_func_public(function)
 
-        self.assertTrue(function.STRONGHOLD_IS_PUBLIC)
+        self.assertTrue(function.LRA_IS_PUBLIC)
