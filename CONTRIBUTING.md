@@ -1,6 +1,18 @@
-#Contributing
-* Let PEP8 be your guide.
-* Please include tests if new code isn't covered by existing tests
-* Please [squash the commits in your Pull request into a single commit](http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html). Unless
-there are some extenuating circumstances why you think you shouldn't.
-* Have fun
+# Contributing to django-login-required-all
+To submit new code to the project you'll need to:
+
+1. Fork the repo
+2. Clone your fork on your local computer:
+`git clone https://github.com/<username>/django-login-required-all.git`
+3. Install [poetry](https://github.com/sdispater/poetry#installation) for managing
+dependencies
+4. Install django-login-required-all locally: `poetry install`
+5. Run the test suite: `pytest`
+6. Install the linters: `pre-commit install`
+7. Create a branch off of `master` for your work: 
+    * `git checkout master`
+    * `git checkout -b <branch-name>`
+8. Make your changes
+9. Add any tests or documentation necessary
+10. Push to your remote: `git push origin <branch-name>`
+11. [Open a pull request](https://github.com/laactech/foxcross/compare)
