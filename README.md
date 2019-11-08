@@ -1,6 +1,9 @@
-[![Build Status](https://travis-ci.org/mgrouchy/django-stronghold.svg?branch=master)](https://travis-ci.org/mgrouchy/django-stronghold)
+# Django Login Required All
 
-# Stronghold
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
+[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://github.com/laactech/foxcross/blob/master/LICENSE.md)
+
+Forked from [django-login-required-all](https://github.com/mgrouchy/django-login-required-all)
 
 Get inside your stronghold and make all your Django views default login_required
 
@@ -13,25 +16,15 @@ WARNING: still in development, so some of the DEFAULTS and such will be changing
 Install via pip.
 
 ```sh
-pip install django-stronghold
+pip install django-login-required-all
 ```
 
-Add stronghold to your INSTALLED_APPS in your Django settings file
-
-```python
-
-INSTALLED_APPS = (
-    #...
-    'stronghold',
-)
-```
-
-Then add the stronghold middleware to your MIDDLEWARE_CLASSES in your Django settings file
+Then add the middleware to your MIDDLEWARE_CLASSES in your Django settings file
 
 ```python
 MIDDLEWARE_CLASSES = (
     #...
-    'stronghold.middleware.LoginRequiredMiddleware',
+    'login_required_all.middleware.LoginRequiredMiddleware',
 )
 
 ```
@@ -43,7 +36,7 @@ To make a view public again you can use the public decorator provided in `strong
 
 ### For function based views
 ```python
-from stronghold.decorators import public
+from login_required_all.decorators import public
 
 
 @public
@@ -57,7 +50,7 @@ def someview(request):
 
 ```python
 from django.utils.decorators import method_decorator
-from stronghold.decorators import public
+from login_required_all.decorators import public
 
 
 class SomeView(View):
@@ -73,7 +66,7 @@ class SomeView(View):
 ### For class based views (mixin)
 
 ```python
-from stronghold.views import StrongholdPublicMixin
+from login_required_all.views import StrongholdPublicMixin
 
 
 class SomeView(StrongholdPublicMixin, View):
@@ -117,7 +110,8 @@ When settings.DEBUG = True. This is additive to your settings to support serving
 Static files and media files from the development server. It does not replace any
 settings you may have in `STRONGHOLD_PUBLIC_URLS`.
 
-> Note: Public URL regexes are matched against [HttpRequest.path_info](https://docs.djangoproject.com/en/dev/ref/request-response/#django.http.HttpRequest.path_info).
+> Note: Public URL regexes are matched against 
+>[HttpRequest.path_info](https://docs.djangoproject.com/en/dev/ref/request-response/#django.http.HttpRequest.path_info).
 
 ### STRONGHOLD_PUBLIC_NAMED_URLS
 You can add a tuple of url names in your settings file with the
@@ -150,15 +144,6 @@ STRONGHOLD_USER_TEST_FUNC = lambda user: user.is_staff
 ```python
 STRONGHOLD_USER_TEST_FUNC = lambda user: user.is_authenticated
 ```
-
-## Compatiblity
-
-Tested with:
-* Django 1.8.x
-* Django 1.9.x
-* Django 1.10.x
-* Django 1.11.x
-* Django 2.0.x
 
 ## Contribute
 

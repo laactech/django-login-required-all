@@ -1,0 +1,75 @@
+[tool.poetry]
+name = "django-login-required-all"
+version = "1.0.0"
+description = "Middleware to required login for all Django URLs"
+authors = ["Steven Pate <steven@laac.dev>", "Mike Grouchy <mgrouchy@gmail.com>"]
+license = "BSD-3-Clause"
+readme = "README.md"
+repository = "https://github.com/laactech/django-login-required-all"
+documentation = ""
+keywords = [
+    "django",
+    "login required",
+    "authentication",
+    "python",
+]
+classifiers = [
+    "Natural Language :: English",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.5",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Environment :: Web Environment",
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: BSD License",
+]
+
+[tool.poetry.dependencies]
+python = "^3.5"
+django = ">=1.11, <3.0"
+
+[tool.poetry.dev-dependencies]
+pre-commit = "^1.20.0"
+mock = "^3.0.5"
+tox = "^3.14.0"
+pytest-django = "^3.6.0"
+pytest-pythonpath = "^0.7.3"
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+isolated_build = true
+envlist =
+       {py35,py36}-django111,
+       {py35,py36,py37}-django20
+       {py35,py36,py37}-django21
+       {py35,py36,py37}-django22
+       {py36,py37,py38}-djangomaster
+
+[travis:env]
+DJANGO =
+    1.11: django111
+    2.0: django20
+    2.1: django21
+    2.2: django22
+    master: djangomaster
+
+[testenv]
+whitelist_externals = poetry
+commands =
+    poetry install -v
+    poetry run pytest tests/
+envdir = {toxworkdir}/venvs/{envname}
+deps =
+        django111: Django>=1.11,<2.0
+        django20: Django>=2.0,<2.1
+        django21: Django>=2.1,<2.2
+        django22: Django>=2.2,<3.0
+        djangomaster: https://github.com/django/django/archive/master.tar.gz
+"""
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

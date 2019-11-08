@@ -1,6 +1,111 @@
-*.pyc
-*.DS_Store
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+
+### SublimeText ###
+# cache files for sublime text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+
+# workspace files are user-specific
+*.sublime-workspace
+
+# project files should be checked into the repository, unless a significant
+# proportion of contributors will probably not be using SublimeText
+# *.sublime-project
+
+# sftp configuration file
+sftp-config.json
+
+# Basics
+*.py[cod]
+__pycache__
+
+# Logs
+logs
+*.log
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+htmlcov
+
+# Translations
+*.mo
+*.pot
+
+# Pycharm
+.idea/
+
+
+# Vim
+
+*~
+*.swp
+*.swo
+
+# Compass
+.sass-cache
+
+# virtual environments
+.env
+
+.terraform
+terraform.tfstate*
+
+staticfiles/
+
+.cache/
+
+scss/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+*.dockercfg
+
+*.zip
+
+.webassets-cache/
+.pytest_cache/
+
+celerybeat-schedule.dat
+celerybeat-schedule.bak
+celerybeat-schedule.dir
+celerybeat.pid
+celerybeat-schedule
+/.python-version
+
+*.sqlite3
+*.egg*
+
+# local env files
+.env.local
+.env.*.local
+
+node_modules
 dist
-*.egg-info
-build
-*.ropeproject
+
+selenium-debug.log
+chromedriver.log
+geckodriver.log
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
