@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django_require_login"
-version = "1.0.0"
+version = "1.0.1"
 description = "Middleware to require login for all Django URLs"
 authors = ["Steven Pate <steven@laac.dev>", "Mike Grouchy <mgrouchy@gmail.com>"]
 license = "BSD-3-Clause"
