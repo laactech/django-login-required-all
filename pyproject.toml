@@ -43,7 +43,7 @@ skipsdist = True
 envlist =
        {py35,py36}-django111
        {py35,py36,py37}-django{20,21,22}
-       {py36,py37,py38}-djangomaster
+       lint
 
 [tox:.package]
 # note tox will use the same python version as under what tox is installed to package
@@ -60,6 +60,7 @@ DJANGO =
     master: djangomaster
 
 [testenv]
+recreate = true
 whitelist_externals = poetry
 install_command = poetry add -D {packages}
 commands =
@@ -72,6 +73,9 @@ deps =
         django21: django>=2.1,<2.2
         django22: django>=2.2,<3.0
         djangomaster: https://github.com/django/django/archive/master.tar.gz
+
+[testenv:lint]
+commands = pre-commit run -a
 """
 
 [build-system]
