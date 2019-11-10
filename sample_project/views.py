@@ -25,7 +25,7 @@ class PublicView(View):
 
 
 class PublicView2(PublicViewMixin, View):
-    """ A view we want to be public, using the StrongholdPublicMixin"""
+    """ A view we want to be public, using the PublicViewMixin"""
 
     def get(self, request, *args, **kwargs):
         return HttpResponse("PublicView")

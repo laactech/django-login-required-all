@@ -28,7 +28,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.5"
-django = ">=1.11, <3.0"
+django = ">=1.11,<3.0"
 
 [tool.poetry.dev-dependencies]
 pre-commit = "^1.20.0"
@@ -41,11 +41,15 @@ legacy_tox_ini = """
 [tox]
 skipsdist = True
 envlist =
-       {py35,py36}-django111,
-       {py35,py36,py37}-django20
-       {py35,py36,py37}-django21
-       {py35,py36,py37}-django22
+       {py35,py36}-django111
+       {py35,py36,py37}-django{20,21,22}
        {py36,py37,py38}-djangomaster
+
+[tox:.package]
+# note tox will use the same python version as under what tox is installed to package
+# so unless this is python 3 you can require a given python version for the packaging
+# environment via the basepython key
+basepython = python3
 
 [travis:env]
 DJANGO =
@@ -56,13 +60,17 @@ DJANGO =
     master: djangomaster
 
 [testenv]
-commands = pytest
+whitelist_externals = poetry
+install_command = poetry add -D {packages}
+commands =
+    poetry install -vvv
+    poetry run pytest
 envdir = {toxworkdir}/venvs/{envname}
 deps =
-        django111: Django>=1.11,<2.0
-        django20: Django>=2.0,<2.1
-        django21: Django>=2.1,<2.2
-        django22: Django>=2.2,<3.0
+        django111: django>=1.11,<2.0
+        django20: django>=2.0,<2.1
+        django21: django>=2.1,<2.2
+        django22: django>=2.2,<3.0
         djangomaster: https://github.com/django/django/archive/master.tar.gz
 """
 

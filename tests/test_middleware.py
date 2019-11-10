@@ -13,7 +13,7 @@ except ImportError:
     from django.core.urlresolvers import reverse
 
 
-class StrongholdMiddlewareTestCase(TestCase):
+class LoginRequiredMiddlewareTestCase(TestCase):
     def test_public_view_is_public(self):
         response = self.client.get(reverse("public_view"))
         self.assertEqual(response.status_code, 200)

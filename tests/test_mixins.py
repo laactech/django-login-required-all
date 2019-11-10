@@ -6,7 +6,7 @@ from django.views.generic.base import TemplateResponseMixin
 from django_require_login.mixins import PublicViewMixin
 
 
-class StrongholdMixinsTests(unittest.TestCase):
+class LoginRequiredMixinsTests(unittest.TestCase):
     def test_public_mixin_sets_attr(self):
         class TestView(PublicViewMixin, View):
             pass

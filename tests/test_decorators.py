@@ -6,7 +6,7 @@ from django.utils.decorators import method_decorator
 from django_require_login import decorators
 
 
-class StrongholdDecoratorTests(unittest.TestCase):
+class LoginRequiredDecoratorTests(unittest.TestCase):
     def test_public_decorator_sets_attr(self):
         @decorators.public
         def function():
