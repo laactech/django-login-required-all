@@ -7,7 +7,7 @@
 
 Forked from [django-stronghold](https://github.com/mgrouchy/django-stronghold)
 
-Make all your Django URLs login_required by default.
+Require login on all your django URLs by default
 
 ## Supported Versions
 
