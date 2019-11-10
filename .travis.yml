@@ -25,6 +25,9 @@ matrix:
       - env: DJANGO=master
 install:
     - pip install tox tox-venv tox-travis
+    - curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+    - source $HOME/.poetry/env
+    - poetry self:update --preview
 script:
     - tox
 after_success:

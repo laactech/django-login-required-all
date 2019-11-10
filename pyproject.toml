@@ -57,7 +57,6 @@ DJANGO =
     2.0: django20
     2.1: django21
     2.2: django22
-    master: djangomaster
 
 [testenv]
 recreate = true
@@ -72,7 +71,6 @@ deps =
         django20: django>=2.0,<2.1
         django21: django>=2.1,<2.2
         django22: django>=2.2,<3.0
-        djangomaster: https://github.com/django/django/archive/master.tar.gz
 
 [testenv:lint]
 commands = pre-commit run -a
