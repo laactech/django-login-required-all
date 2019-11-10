@@ -2,8 +2,8 @@ from django.http import HttpResponse
 from django.utils.decorators import method_decorator
 from django.views.generic import View
 
-from login_required_all.decorators import public
-from login_required_all.views import StrongholdPublicMixin
+from django_require_login.decorators import public
+from django_require_login.mixins import PublicViewMixin
 
 
 class ProtectedView(View):
@@ -24,7 +24,7 @@ class PublicView(View):
         return HttpResponse("PublicView")
 
 
-class PublicView2(StrongholdPublicMixin, View):
+class PublicView2(PublicViewMixin, View):
     """ A view we want to be public, using the StrongholdPublicMixin"""
 
     def get(self, request, *args, **kwargs):

@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.test import TestCase
 from django.test.client import RequestFactory
 
-from login_required_all.middleware import LoginRequiredMiddleware
+from django_require_login.middleware import LoginRequiredMiddleware
 
 try:
     from django.urls import reverse
@@ -25,7 +25,7 @@ class StrongholdMiddlewareTestCase(TestCase):
 
 class LoginRequiredMiddlewareTests(TestCase):
     def setUp(self):
-        self.middleware = LoginRequiredMiddleware()
+        self.middleware = LoginRequiredMiddleware(None)
 
         self.request = RequestFactory().get("/test-protected-url/")
         self.request.user = mock.Mock()
@@ -71,14 +71,15 @@ class LoginRequiredMiddlewareTests(TestCase):
     def test_returns_none_when_url_is_decorated_public(self):
         self.set_authenticated(False)
 
-        self.kwargs["view_func"].LRA_IS_PUBLIC = True
+        self.kwargs["view_func"].REQUIRE_LOGIN_IS_PUBLIC = True
         response = self.middleware.process_view(**self.kwargs)
 
         self.assertEqual(response, None)
 
     def test_redirects_to_login_when_not_passing_custom_test(self):
         with mock.patch(
-            "login_required_all.conf.LRA_USER_TEST_FUNC", lambda u: u.is_staff
+            "django_require_login.conf.REQUIRE_LOGIN_USER_TEST_FUNC",
+            lambda u: u.is_staff,
         ):
             self.request.user.is_staff = False
 
@@ -88,7 +89,8 @@ class LoginRequiredMiddlewareTests(TestCase):
 
     def test_returns_none_when_passing_custom_test(self):
         with mock.patch(
-            "login_required_all.conf.LRA_USER_TEST_FUNC", lambda u: u.is_staff
+            "django_require_login.conf.REQUIRE_LOGIN_USER_TEST_FUNC",
+            lambda u: u.is_staff,
         ):
             self.request.user.is_staff = True
 

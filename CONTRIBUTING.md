@@ -1,12 +1,12 @@
-# Contributing to django-login-required-all
+# Contributing to django-require-login
 To submit new code to the project you'll need to:
 
 1. Fork the repo
 2. Clone your fork on your local computer:
-`git clone https://github.com/<username>/django-login-required-all.git`
+`git clone https://github.com/<username>/django-require-login.git`
 3. Install [poetry](https://github.com/sdispater/poetry#installation) for managing
 dependencies
-4. Install django-login-required-all locally: `poetry install`
+4. Install django-require-login locally: `poetry install`
 5. Run the test suite: `pytest`
 6. Install the linters: `pre-commit install`
 7. Create a branch off of `master` for your work: 

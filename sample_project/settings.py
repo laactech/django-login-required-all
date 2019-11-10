@@ -40,7 +40,7 @@ MIDDLEWARE_CLASSES = (
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
-    "login_required_all.middleware.LoginRequiredMiddleware",
+    "django_require_login.middleware.LoginRequiredMiddleware",
 )
 
 MIDDLEWARE = MIDDLEWARE_CLASSES
@@ -77,6 +77,6 @@ LOGGING = {
             "handlers": ["mail_admins"],
             "level": "ERROR",
             "propagate": True,
-        },
+        }
     },
 }

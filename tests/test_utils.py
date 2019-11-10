@@ -1,6 +1,6 @@
 import unittest
 
-from login_required_all import utils
+from django_require_login import utils
 
 
 class IsViewFuncPublicTests(unittest.TestCase):
@@ -16,7 +16,7 @@ class IsViewFuncPublicTests(unittest.TestCase):
         def function():
             pass
 
-        function.LRA_IS_PUBLIC = False
+        function.REQUIRE_LOGIN_IS_PUBLIC = False
 
         is_public = utils.is_view_func_public(function)
 
@@ -26,7 +26,7 @@ class IsViewFuncPublicTests(unittest.TestCase):
         def function():
             pass
 
-        function.LRA_IS_PUBLIC = True
+        function.REQUIRE_LOGIN_IS_PUBLIC = True
 
         is_public = utils.is_view_func_public(function)
 
@@ -40,4 +40,4 @@ class SetViewFuncPublicTests(unittest.TestCase):
 
         utils.set_view_func_public(function)
 
-        self.assertTrue(function.LRA_IS_PUBLIC)
+        self.assertTrue(function.REQUIRE_LOGIN_IS_PUBLIC)

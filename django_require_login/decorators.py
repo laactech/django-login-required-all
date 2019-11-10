@@ -1,12 +1,12 @@
 from functools import partial
 
-from login_required_all.utils import set_view_func_public
+from .utils import set_view_func_public
 
 
 def public(function):
     """
     Decorator for public views that do not require authentication
-    Sets an attribute in the fuction LRA_IS_PUBLIC to True
+    Sets an attribute in the fuction REQUIRE_LOGIN_IS_PUBLIC to True
     """
     orig_func = function
     outer_partial_wrapper = None

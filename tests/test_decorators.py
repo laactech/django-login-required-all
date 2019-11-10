@@ -3,7 +3,7 @@ import unittest
 
 from django.utils.decorators import method_decorator
 
-from login_required_all import decorators
+from django_require_login import decorators
 
 
 class StrongholdDecoratorTests(unittest.TestCase):
@@ -12,7 +12,7 @@ class StrongholdDecoratorTests(unittest.TestCase):
         def function():
             pass
 
-        self.assertTrue(function.LRA_IS_PUBLIC)
+        self.assertTrue(function.REQUIRE_LOGIN_IS_PUBLIC)
 
     def test_public_decorator_sets_attr_with_nested_decorators(self):
         def stub_decorator(func):
@@ -23,7 +23,7 @@ class StrongholdDecoratorTests(unittest.TestCase):
         def inner_function():
             pass
 
-        self.assertTrue(inner_function.LRA_IS_PUBLIC)
+        self.assertTrue(inner_function.REQUIRE_LOGIN_IS_PUBLIC)
 
     def test_public_decorator_works_with_partials(self):
         def function():
@@ -33,7 +33,7 @@ class StrongholdDecoratorTests(unittest.TestCase):
 
         decorators.public(partial)
 
-        self.assertTrue(function.LRA_IS_PUBLIC)
+        self.assertTrue(function.REQUIRE_LOGIN_IS_PUBLIC)
 
     def test_public_decorator_works_with_method_decorator(self):
         class TestClass:
@@ -41,4 +41,4 @@ class StrongholdDecoratorTests(unittest.TestCase):
             def function(self):
                 pass
 
-        self.assertTrue(TestClass.function.LRA_IS_PUBLIC)
+        self.assertTrue(TestClass.function.REQUIRE_LOGIN_IS_PUBLIC)

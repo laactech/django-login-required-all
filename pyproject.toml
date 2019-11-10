@@ -1,16 +1,17 @@
 [tool.poetry]
-name = "login_required_all"
+name = "django_require_login"
 version = "1.0.0"
-description = "Middleware to required login for all Django URLs"
+description = "Middleware to require login for all Django URLs"
 authors = ["Steven Pate <steven@laac.dev>", "Mike Grouchy <mgrouchy@gmail.com>"]
 license = "BSD-3-Clause"
 readme = "README.md"
-repository = "https://github.com/laactech/django-login-required-all"
+repository = "https://github.com/laactech/django-require-login"
 documentation = ""
 keywords = [
     "django",
     "login required",
     "authentication",
+    "login",
     "python",
 ]
 classifiers = [

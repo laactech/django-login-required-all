@@ -260,7 +260,7 @@ description = "A Django plugin for pytest."
 name = "pytest-django"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-version = "3.6.0"
+version = "3.7.0"
 
 [package.dependencies]
 pytest = ">=3.6"
@@ -268,17 +268,6 @@ pytest = ">=3.6"
 [package.extras]
 docs = ["sphinx", "sphinx-rtd-theme"]
 testing = ["django", "django-configurations (>=2.0)", "six"]
-
-[[package]]
-category = "dev"
-description = "pytest plugin for adding to the PYTHONPATH from command line or configs."
-name = "pytest-pythonpath"
-optional = false
-python-versions = "*"
-version = "0.7.3"
-
-[package.dependencies]
-pytest = ">=2.5.2"
 
 [[package]]
 category = "main"
@@ -382,7 +371,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["pathlib2", "contextlib2", "unittest2"]
 
 [metadata]
-content-hash = "a62f902cb27c3cac5bee65d44d4abeafa173757c2d210900f48f462dbca3d405"
+content-hash = "2c4a177033b17580d585e06464c0e00fc7220995dc2e4a359c78dcfdf2ee06da"
 python-versions = "^3.5"
 
 [metadata.files]
@@ -466,11 +455,8 @@ pytest = [
     {file = "pytest-5.2.2.tar.gz", hash = "sha256:27abc3fef618a01bebb1f0d6d303d2816a99aa87a5968ebc32fe971be91eb1e6"},
 ]
 pytest-django = [
-    {file = "pytest-django-3.6.0.tar.gz", hash = "sha256:b6c900461a6a7c450dcf11736cabc289a90f5d6f28ef74c46e32e86ffd16a4bd"},
-    {file = "pytest_django-3.6.0-py2.py3-none-any.whl", hash = "sha256:497e8d967d2ec82b3388267b2f1f037761ff34c10ebb13c534d8c5804846e4eb"},
-]
-pytest-pythonpath = [
-    {file = "pytest-pythonpath-0.7.3.tar.gz", hash = "sha256:63fc546ace7d2c845c1ee289e8f7a6362c2b6bae497d10c716e58e253e801d62"},
+    {file = "pytest-django-3.7.0.tar.gz", hash = "sha256:17592f06d51c2ef4b7a0fb24aa32c8b6998506a03c8439606cb96db160106659"},
+    {file = "pytest_django-3.7.0-py2.py3-none-any.whl", hash = "sha256:ef3d15b35ed7e46293475e6f282e71a53bcd8c6f87bdc5d5e7ad0f4d49352127"},
 ]
 pytz = [
     {file = "pytz-2019.3-py2.py3-none-any.whl", hash = "sha256:1c557d7d0e871de1f5ccd5833f60fb2550652da6be2693c1e02300743d21500d"},
