@@ -1,5 +1,6 @@
 # Django Require Login
 
+[![Build Status](https://travis-ci.org/laactech/django-require-login.svg?branch=master)](https://travis-ci.org/laactech/django-require-login)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://github.com/laactech/django-require-login/blob/master/LICENSE.md)
 
@@ -38,7 +39,7 @@ from django.http import HttpResponse
 
 @public
 def my_view(request):
-	return HttpResponse("Public view")
+    return HttpResponse("Public")
 
 ```
 
@@ -52,11 +53,11 @@ from django.http import HttpResponse
 
 
 class SomeView(View):
-	def get(self, request, *args, **kwargs):
-		return HttpResponse("Public view")
-
-	@method_decorator(public)
-	def dispatch(self, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
+        return HttpResponse("Public view")
+    
+    @method_decorator(public)
+    def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
 ```
 
