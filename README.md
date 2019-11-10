@@ -138,6 +138,13 @@ REQUIRE_LOGIN_USER_TEST_FUNC = lambda user: user.is_staff
 REQUIRE_LOGIN_USER_TEST_FUNC = lambda user: user.is_authenticated
 ```
 
+## Security
+
+If you believe you've found a bug with security implications, please do not disclose this
+issue in a public forum.
+
+Email us at [support@laac.dev](mailto:support@laac.dev)
+
 ## Contribute
 
 See [CONTRIBUTING.md](https://github.com/laactech/django-require-login/blob/master/CONTRIBUTING.md)
