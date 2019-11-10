@@ -5,11 +5,7 @@
 
 Forked from [django-stronghold](https://github.com/mgrouchy/django-stronghold)
 
-Get inside your stronghold and make all your Django views default login_required
-
-Stronghold is a very small and easy to use django app that makes all your Django project default to require login for all of your views.
-
-WARNING: still in development, so some of the DEFAULTS and such will be changing without notice.
+Make all your Django URLs login_required by default.
 
 ## Installation
 
@@ -32,7 +28,7 @@ MIDDLEWARE_CLASSES = (
 ## Usage
 
 If you followed the installation instructions now all your views are defaulting to require a login.
-To make a view public again you can use the public decorator provided in `stronghold.decorators` like so:
+To make a view public again you can use the public decorator:
 
 ### For function based views
 ```python
@@ -77,9 +73,6 @@ class SomeView(PublicViewMixin, View):
 
 ## Configuration (optional)
 
-
-### REQUIRE_LOGIN_DEFAULTS
-
 You can add a tuple of url regexes in your settings file with the
 `REQUIRE_LOGIN_PUBLIC_URLS` setting. Any url that matches against these patterns
  will be made public without using the `@public` decorator.
@@ -92,7 +85,7 @@ You can add a tuple of url regexes in your settings file with the
 REQUIRE_LOGIN_PUBLIC_URLS = ()
 ```
 
-If DEBUG is True REQUIRE_LOGIN_PUBLIC_URLS contains:
+If DEBUG is True, REQUIRE_LOGIN_PUBLIC_URLS contains:
 ```python
 from django.conf import settings
 
@@ -112,16 +105,13 @@ settings you may have in `REQUIRE_LOGIN_PUBLIC_URLS`.
 ### REQUIRE_LOGIN_PUBLIC_NAMED_URLS
 You can add a tuple of url names in your settings file with the
 `REQUIRE_LOGIN_PUBLIC_NAMED_URLS` setting. Names in this setting will be reversed using
-`django.core.urlresolvers.reverse` and any url matching the output of the reverse
+`django.urls.reverse` and any url matching the output of the reverse
 call will be made public without using the `@public` decorator:
 
 **Default**:
 ```python
 REQUIRE_LOGIN_PUBLIC_NAMED_URLS = ()
 ```
-
-If REQUIRE_LOGIN_DEFAULTS is True additionally we search for `django.contrib.auth`
-if it exists, we add the login and logout view names to `REQUIRE_LOGIN_PUBLIC_NAMED_URLS`
 
 ### REQUIRE_LOGIN_USER_TEST_FUNC
 Optionally, set REQUIRE_LOGIN_USER_TEST_FUNC to a callable to limit access to users

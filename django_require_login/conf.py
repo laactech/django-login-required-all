@@ -1,13 +1,9 @@
 import re
 
 from django.conf import settings
+from django.urls import NoReverseMatch, reverse
 
 from .exceptions import NamedUrlNoReverseMatch
-
-try:
-    from django.urls import reverse, NoReverseMatch
-except ImportError:
-    from django.core.urlresolvers import reverse, NoReverseMatch
 
 REQUIRE_LOGIN_PUBLIC_URLS = getattr(settings, "REQUIRE_LOGIN_PUBLIC_URLS", ())
 REQUIRE_LOGIN_DEFAULTS = getattr(settings, "REQUIRE_LOGIN_DEFAULTS", True)
