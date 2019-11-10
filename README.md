@@ -140,4 +140,4 @@ REQUIRE_LOGIN_USER_TEST_FUNC = lambda user: user.is_authenticated
 
 ## Contribute
 
-See CONTRIBUTING.md
+See [CONTRIBUTING.md](https://github.com/laactech/django-require-login/blob/master/CONTRIBUTING.md)
