@@ -35,6 +35,8 @@ pre-commit = "^1.20.0"
 mock = "^3.0.5"
 tox = "^3.14.0"
 pytest-django = "^3.6.0"
+pytest-cov = "^2.8.1"
+pytest = "^5.2.2"
 
 [tool.tox]
 legacy_tox_ini = """
@@ -64,7 +66,7 @@ whitelist_externals = poetry
 install_command = poetry add -D {packages}
 commands =
     poetry install -vvv
-    poetry run pytest
+    poetry run pytest --cov=django_require_login
 envdir = {toxworkdir}/venvs/{envname}
 deps =
         django111: django>=1.11,<2.0
