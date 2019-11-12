@@ -14,7 +14,7 @@ Require login on all your django URLs by default
 * Python 3.5, 3.6, 3.7
 * Django 1.11, 2.0, 2.1, 2.2
 
-## Installation
+## Installation and Setup
 
 Install via pip.
 
@@ -22,19 +22,37 @@ Install via pip.
 pip install django-require-login
 ```
 
-Then add the middleware to your MIDDLEWARE_CLASSES in your Django settings file
+Then add the middleware to your MIDDLEWARE in your Django settings file
 
 ```python
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = [
     #...
     "django_require_login.middleware.LoginRequiredMiddleware",
-)
+]
 
+```
+
+After adding the middleware, all your Django views will default to login required.
+
+If your `LOGIN_URL` and `LOGOUT_REDIRECT_URL` contain a
+[named URL pattern](https://docs.djangoproject.com/en/2.2/topics/http/urls/#naming-url-patterns)
+add `REQUIRE_LOGIN_PUBLIC_NAMED_URLS` to your settings file with your `LOGIN_URL` and
+`LOGOUT_REDIRECT_URL`
+
+```python
+REQUIRE_LOGIN_PUBLIC_NAMED_URLS = (LOGIN_URL, LOGOUT_REDIRECT_URL)
+```
+
+If your `LOGIN_URL` and `LOGOUT_REDIRECT_URL` don't contain a named URL pattern add 
+`REQUIRE_LOGIN_PUBLIC_URLS` to your settings file with your `LOGIN_URL` and
+`LOGOUT_REDIRECT_URL`
+
+```python
+REQUIRE_LOGIN_PUBLIC_URLS = (LOGIN_URL, LOGOUT_REDIRECT_URL)
 ```
 
 ## Usage
 
-If you followed the installation instructions now all your views are defaulting to require a login.
 To make a view public again you can use the public decorator:
 
 ### For function based views
@@ -92,7 +110,8 @@ You can add a tuple of url regexes in your settings file with the
 REQUIRE_LOGIN_PUBLIC_URLS = ()
 ```
 
-If DEBUG is True, REQUIRE_LOGIN_PUBLIC_URLS contains:
+#### Development Defaults
+If `DEBUG` is True, `REQUIRE_LOGIN_PUBLIC_URLS` contains:
 ```python
 from django.conf import settings
 
@@ -102,9 +121,9 @@ from django.conf import settings
 )
 
 ```
-When settings.DEBUG = True, this is additive to your settings to support serving
-Static files and media files from the development server. It does not replace any
-settings you may have in `REQUIRE_LOGIN_PUBLIC_URLS`.
+This is additive to your settings to support serving static files and media files from
+the development server. It does not replace any settings you may have in
+`REQUIRE_LOGIN_PUBLIC_URLS`.
 
 > Note: Public URL regexes are matched against 
 >[HttpRequest.path_info](https://docs.djangoproject.com/en/dev/ref/request-response/#django.http.HttpRequest.path_info).
@@ -136,6 +155,19 @@ REQUIRE_LOGIN_USER_TEST_FUNC = lambda user: user.is_staff
 
 ```python
 REQUIRE_LOGIN_USER_TEST_FUNC = lambda user: user.is_authenticated
+```
+
+## Integration with Django REST Framework
+
+Django REST Framework is not part of Django and uses its own authentication system.
+For this reason, you need to make all of your DRF views public.
+
+### Example
+
+Assuming all your DRF views live under `/api/` you can make them all public using a regex:
+
+```python
+REQUIRE_LOGIN_PUBLIC_URLS = (r"^/api/.*",)
 ```
 
 ## Security
