@@ -160,7 +160,8 @@ REQUIRE_LOGIN_USER_TEST_FUNC = lambda user: user.is_authenticated
 ## Integration with Django REST Framework
 
 Django REST Framework is not part of Django and uses its own authentication system.
-For this reason, you need to make all of your DRF views public.
+For this reason, you need to make all of your DRF views public and rely on DRF's
+authentication system.
 
 ### Example
 
