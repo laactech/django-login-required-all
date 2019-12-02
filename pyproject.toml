@@ -20,6 +20,7 @@ classifiers = [
     "Programming Language :: Python :: 3.5",
     "Programming Language :: Python :: 3.6",
     "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
     "Environment :: Web Environment",
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
@@ -28,7 +29,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.5"
-django = ">=1.11,<3.0"
+django = ">=1.11,<3.1"
 
 [tool.poetry.dev-dependencies]
 pre-commit = "^1.20.0"
@@ -44,7 +45,9 @@ legacy_tox_ini = """
 skipsdist = True
 envlist =
        {py35,py36}-django111
-       {py35,py36,py37}-django{20,21,22}
+       {py35,py36,py37}-django{20,21}
+       {py35,py36,py37,py38}-django{22}
+       {py36,p37,p38}-django{30}
        lint
 
 [tox:.package]
@@ -59,6 +62,7 @@ DJANGO =
     2.0: django20
     2.1: django21
     2.2: django22
+    3.0: django30
 
 [testenv]
 recreate = true
@@ -73,6 +77,7 @@ deps =
         django20: django>=2.0,<2.1
         django21: django>=2.1,<2.2
         django22: django>=2.2,<3.0
+        django30: django>=3.0,<3.1
 
 [testenv:lint]
 commands = pre-commit run -a
