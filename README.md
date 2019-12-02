@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/laactech/django-require-login.svg?branch=master)](https://travis-ci.org/laactech/django-require-login)
 [![codecov](https://codecov.io/gh/laactech/django-require-login/branch/master/graph/badge.svg)](https://codecov.io/gh/laactech/django-require-login)
+[![PyPI](https://img.shields.io/pypi/v/django-require-login)](https://pypi.org/project/django-require-login/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://github.com/laactech/django-require-login/blob/master/LICENSE.md)
 
