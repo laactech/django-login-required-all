@@ -22,9 +22,8 @@ matrix:
       - { python: "3.8", env: DJANGO=3.0 }
 install:
     - pip install tox tox-venv tox-travis
-    - curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+    - curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python - --preview
     - source $HOME/.poetry/env
-    - poetry self:update --preview
 script:
     - tox
 after_success:
