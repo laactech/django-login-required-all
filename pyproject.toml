@@ -61,11 +61,10 @@ DJANGO =
 [testenv]
 recreate = true
 whitelist_externals = poetry
-install_command =
-    poetry add -D {packages}
-    poetry add -D asgiref
+install_command = poetry add -D {packages}
 commands =
     poetry install -vvv
+    poetry add asgiref
     poetry run pytest --cov=django_require_login
 envdir = {toxworkdir}/venvs/{envname}
 deps =
