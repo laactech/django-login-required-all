@@ -5,8 +5,12 @@
     * Note: the packages source has not been significantly changed and should still work
 * Dropping official support for Django 1.11, 2.0, and 2.1 to follow Django's release cycle
     * Note: the packages source has not been significantly changed and should still work
-* Adding testing for Django 3.0 and 3.1
+* Adding testing for Django 3.1
 * Dropping testing for unsupported versions
+
+## 1.0.2
+
+* Add Python 3.8 and Django 3.0 support
 
 ## 1.0.1
 
