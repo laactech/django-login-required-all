@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django_require_login"
-version = "1.0.1"
+version = "1.1.0"
 description = "Middleware to require login for all Django URLs"
 authors = ["Steven Pate <steven@laac.dev>", "Mike Grouchy <mgrouchy@gmail.com>"]
 license = "BSD-3-Clause"
@@ -17,9 +17,9 @@ classifiers = [
     "Natural Language :: English",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.5",
     "Programming Language :: Python :: 3.6",
     "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
     "Environment :: Web Environment",
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
@@ -27,24 +27,23 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.5"
-django = ">=1.11,<3.0"
+python = "^3.6"
+django = ">= 2.2, < 4.0"
 
 [tool.poetry.dev-dependencies]
-pre-commit = "^1.20.0"
+pre-commit = "^2.0.0"
 mock = "^3.0.5"
 tox = "^3.14.0"
 pytest-django = "^3.6.0"
 pytest-cov = "^2.8.1"
-pytest = "^5.2.2"
+pytest = "^6.0.0"
 
 [tool.tox]
 legacy_tox_ini = """
 [tox]
 skipsdist = True
 envlist =
-       {py35,py36}-django111
-       {py35,py36,py37}-django{20,21,22}
+       {py36,py37,py38}-django{22,30,31}
        lint
 
 [tox:.package]
@@ -55,10 +54,9 @@ basepython = python3
 
 [travis:env]
 DJANGO =
-    1.11: django111
-    2.0: django20
-    2.1: django21
     2.2: django22
+    3.0: django30
+    3.1: django31
 
 [testenv]
 recreate = true
@@ -69,14 +67,44 @@ commands =
     poetry run pytest --cov=django_require_login
 envdir = {toxworkdir}/venvs/{envname}
 deps =
-        django111: django>=1.11,<2.0
-        django20: django>=2.0,<2.1
-        django21: django>=2.1,<2.2
         django22: django>=2.2,<3.0
+        django30: django>=3.0,<3.1
+        django31: django>=3.1,<3.2
 
 [testenv:lint]
 commands = pre-commit run -a
 """
+
+[tool.pytest.ini_options]
+python_files = "test*.py *tests.py tests*.py *test.py"
+DJANGO_SETTINGS_MODULE = "sample_project.settings"
+
+[tool.isort]
+known_third_party = ["django", "mock"]
+profile = "black"
+line_length = 90
+
+[tool.black]
+line-length = 90
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  # The following are specific to Black, you probably don't want those.
+  | blib2to3
+  | tests/data
+  | profiling
+)/
+'''
 
 [build-system]
 requires = ["poetry>=0.12"]
