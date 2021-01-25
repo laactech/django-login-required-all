@@ -12,7 +12,7 @@ Require login on all your django URLs by default
 
 ## Supported Versions
 
-* Python 3.6, 3.7, 3.8
+* Python 3.6, 3.7, 3.8, 3.9
 * Django 2.2, 3.0, 3.1
 
 ## Installation and Setup
