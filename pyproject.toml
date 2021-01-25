@@ -20,6 +20,7 @@ classifiers = [
     "Programming Language :: Python :: 3.6",
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
     "Environment :: Web Environment",
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
@@ -43,7 +44,7 @@ legacy_tox_ini = """
 [tox]
 skipsdist = True
 envlist =
-       {py36,py37,py38}-django{22,30,31}
+       {py36,py37,py38,py39}-django{22,30,31}
        lint
 
 [tox:.package]
