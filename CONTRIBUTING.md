@@ -15,4 +15,4 @@ dependencies
 8. Make your changes
 9. Add any tests or documentation necessary
 10. Push to your remote: `git push origin <branch-name>`
-11. [Open a pull request](https://github.com/laactech/foxcross/compare)
+11. [Open a pull request](https://github.com/laactech/django-require-login/pulls)
