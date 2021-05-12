@@ -1,3 +1,8 @@
+## 1.1.1
+
+* Fixing issue where `re.compile('^/.+$')` is added to `LoginRequiredMiddleware.public_view_urls` when `DEBUG` is set to
+  true and `MEDIA_URL` is not defined (Thanks to Bernard)
+
 ## 1.1.0
 
 * Changing max version restriction for Django from 3.0 to 4.0

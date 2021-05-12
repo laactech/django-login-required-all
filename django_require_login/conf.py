@@ -30,12 +30,9 @@ if settings.DEBUG:
     if static_url:
         REQUIRE_LOGIN_PUBLIC_URLS += (r"^{}.+$".format(static_url),)
 
-    if media_url:
+    if media_url and media_url != "/":
         REQUIRE_LOGIN_PUBLIC_URLS += (r"^{}.+$".format(media_url),)
 
-# named urls can be unsafe if a user puts the wrong url in. Right now urls that
-# dont reverse are just ignored with a warning. Maybe in the future make this
-# so it breaks?
 named_urls = []
 for named_url in REQUIRE_LOGIN_PUBLIC_NAMED_URLS:
     try:

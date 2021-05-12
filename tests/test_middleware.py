@@ -22,6 +22,16 @@ class LoginRequiredMiddlewareTestCase(TestCase):
         response = self.client.get(reverse("protected_view"))
         self.assertEqual(response.status_code, 302)
 
+    def test_public_view_is_public_with_root_media_url(self):
+        with self.settings(MEDIA_URL="/", DEBUG=True):
+            response = self.client.get(reverse("public_view"))
+            self.assertEqual(response.status_code, 200)
+
+    def test_private_view_is_private_with_root_media_url(self):
+        with self.settings(MEDIA_URL="/", DEBUG=True):
+            response = self.client.get(reverse("protected_view"))
+            self.assertEqual(response.status_code, 302)
+
 
 class LoginRequiredMiddlewareTests(TestCase):
     def setUp(self):
