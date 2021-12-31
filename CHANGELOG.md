@@ -1,3 +1,7 @@
+## 1.1.2
+
+* Added Django 4.0 support
+
 ## 1.1.1
 
 * Fixing issue where `re.compile('^/.+$')` is added to `LoginRequiredMiddleware.public_view_urls` when `DEBUG` is set to
