@@ -1,3 +1,7 @@
+## 1.1.3
+
+* Changing Django and Python version support. See README for supported versions.
+
 ## 1.1.2
 
 * Added Django 4.0 support
