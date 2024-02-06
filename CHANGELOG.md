@@ -1,3 +1,9 @@
+## 1.1.4
+
+* Adding tests for Django 5.0 and Python 3.12
+* Dropping support for older Python and Django versions. See README for supported versions. Older versions might
+still work but aren't officially tested.
+
 ## 1.1.3
 
 * Changing Django and Python version support. See README for supported versions.

@@ -12,8 +12,8 @@ Require login on all your django URLs by default
 
 ## Supported Versions
 
-* Python 3.8, 3.9, 3.10, 3.11
-* Django 4.0, 4.1, 4.2
+* Python 3.10, 3.11, 3.12
+* Django 4.2, 5.0
 
 ## Installation and Setup
 
