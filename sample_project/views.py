@@ -14,7 +14,7 @@ class ProtectedView(View):
 
 
 class PublicView(View):
-    """ A view we want to be public"""
+    """A view we want to be public"""
 
     @method_decorator(public)
     def dispatch(self, *args, **kwargs):
@@ -25,7 +25,7 @@ class PublicView(View):
 
 
 class PublicView2(PublicViewMixin, View):
-    """ A view we want to be public, using the PublicViewMixin"""
+    """A view we want to be public, using the PublicViewMixin"""
 
     def get(self, request, *args, **kwargs):
         return HttpResponse("PublicView")
@@ -33,5 +33,5 @@ class PublicView2(PublicViewMixin, View):
 
 @public
 def public_view3(request):
-    """ A function view we want to be public"""
+    """A function view we want to be public"""
     return HttpResponse("PublicView")

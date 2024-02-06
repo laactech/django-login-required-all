@@ -7,11 +7,13 @@ from .exceptions import NamedUrlNoReverseMatch
 
 REQUIRE_LOGIN_PUBLIC_URLS = getattr(settings, "REQUIRE_LOGIN_PUBLIC_URLS", ())
 REQUIRE_LOGIN_DEFAULTS = getattr(settings, "REQUIRE_LOGIN_DEFAULTS", True)
-REQUIRE_LOGIN_PUBLIC_NAMED_URLS = getattr(settings, "REQUIRE_LOGIN_PUBLIC_NAMED_URLS", ())
+REQUIRE_LOGIN_PUBLIC_NAMED_URLS = getattr(
+    settings, "REQUIRE_LOGIN_PUBLIC_NAMED_URLS", ()
+)
 
 
 def is_authenticated(user):
-    """ make compatible with django 1 and 2 """
+    """make compatible with django 1 and 2"""
     try:
         return user.is_authenticated()
     except TypeError:
